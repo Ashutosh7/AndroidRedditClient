@@ -31,7 +31,6 @@ public class NavListAdapter extends ArrayAdapter<NavItem> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         View v = View.inflate(context, resLayout, null);
 
         TextView tvTitle = (TextView) v.findViewById(R.id.title);
@@ -42,7 +41,6 @@ public class NavListAdapter extends ArrayAdapter<NavItem> {
         tvTitle.setText(navItem.getTitle());
         tvSubTitle.setText(navItem.getSubTitle());
         navIcon.setImageResource(navItem.getResIcon());
-
 
         return v;
     }

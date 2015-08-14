@@ -15,12 +15,11 @@ import com.projects.ashutoshb.redditclient.R;
  * Created by ashutosh.b on 8/13/15.
  */
 public class Tab1Fragment extends Fragment {
-
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.tab1fragment_layout, container, false);
-
         return v;
     }
 }

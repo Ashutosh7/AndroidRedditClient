@@ -14,13 +14,10 @@ import com.projects.ashutoshb.redditclient.R;
  * Created by ashutosh.b on 8/14/15.
  */
 public class MySettings extends Fragment {
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View v = inflater.inflate(R.layout.fragment_settings, container, false);
-
         return v;
     }
 }

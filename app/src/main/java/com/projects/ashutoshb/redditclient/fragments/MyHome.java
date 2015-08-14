@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.TabHost;
 
-
 import com.projects.ashutoshb.redditclient.R;
 import com.projects.ashutoshb.redditclient.adapters.MyFragmentPagerAdapter;
 import com.projects.ashutoshb.redditclient.inner.fragments.Tab1Fragment;
@@ -25,7 +24,8 @@ import java.util.List;
 /**
  * Created by ashutosh.b on 8/14/15.
  */
-public class MyHome extends Fragment implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener{
+public class MyHome extends Fragment implements TabHost.OnTabChangeListener,
+        ViewPager.OnPageChangeListener{
 
     private ViewPager viewPager;
     private TabHost tabHost;
@@ -35,19 +35,16 @@ public class MyHome extends Fragment implements TabHost.OnTabChangeListener, Vie
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
         v = inflater.inflate(R.layout.tabs_viewpager_layout, container, false);
 
-        //Put TabHostView Pager here"
-        /*part1**********************/
-
+        //TabHostView Pager"
         i++;
         this.initViewPager();
         this.initTabHost(savedInstanceState);
 
-
-        /*part1*************/
         return v;
     }
 
@@ -92,7 +89,6 @@ public class MyHome extends Fragment implements TabHost.OnTabChangeListener, Vie
 
     @Override
     public void onPageSelected(int selectedItem) {
-
         tabHost.setCurrentTab(selectedItem);
     }
 
@@ -103,11 +99,10 @@ public class MyHome extends Fragment implements TabHost.OnTabChangeListener, Vie
 
     @Override
     public void onTabChanged(String tabId) {
-
         int selectedItem = tabHost.getCurrentTab();
         viewPager.setCurrentItem(selectedItem);
 
-        HorizontalScrollView hScrollView = (HorizontalScrollView) v.findViewById(R.id.h_scroll_view);
+        HorizontalScrollView hScrollView = (HorizontalScrollView)v.findViewById(R.id.h_scroll_view);
         View tabView = tabHost.getCurrentTabView();
         int scrollPos = tabView.getLeft() - (hScrollView.getWidth() - tabView.getWidth())/2;
         hScrollView.smoothScrollTo(scrollPos,0);
@@ -115,7 +110,6 @@ public class MyHome extends Fragment implements TabHost.OnTabChangeListener, Vie
     }
 
     private void initViewPager() {
-
         viewPager = (ViewPager) v.findViewById(R.id.view_pager);
         List<Fragment> listFragments = new ArrayList<Fragment>();
         listFragments.add(new Tab1Fragment());
@@ -125,7 +119,9 @@ public class MyHome extends Fragment implements TabHost.OnTabChangeListener, Vie
         listFragments.add(new Tab2Fragment());
         listFragments.add(new Tab3Fragment());
 
-        MyFragmentPagerAdapter myFragmentPagerAdapter = new MyFragmentPagerAdapter(getChildFragmentManager(), listFragments);
+        MyFragmentPagerAdapter myFragmentPagerAdapter = new MyFragmentPagerAdapter
+                (getChildFragmentManager(), listFragments);
+
         viewPager.setAdapter(myFragmentPagerAdapter);
         viewPager.addOnPageChangeListener(this);
     }
