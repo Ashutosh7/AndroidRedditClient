@@ -1,7 +1,6 @@
 package com.projects.ashutoshb.redditclient.models;
 
 import java.net.URI;
-import java.net.URL;
 
 /**
  * Created by ashutosh.b on 8/17/15.
@@ -15,16 +14,16 @@ public class PostItem {
     private int _numComments;
     private String _subredditId;
     private String _postHint;
-    private URL _url;
+    private URI _url;
     private String _title;
-    private URL _previewUrl;
+    private URI _previewUrl;
     private int _score;
     private String _permalink;
     private String _subredditName;
 
     public PostItem(String _domain, String _author, boolean _over18, URI thumbnail,
-                    int _numComments, String subredditId, String postHint, URL url,
-                    String title, URL _previewUrl, int _score, String _permalink,
+                    int _numComments, String subredditId, String postHint, URI url,
+                    String title, URI _previewUrl, int _score, String _permalink,
                     String _subredditName) {
 
         this._domain = _domain;
@@ -98,11 +97,11 @@ public class PostItem {
         this._postHint = postHint;
     }
 
-    public URL getUrl() {
+    public URI getUrl() {
         return _url;
     }
 
-    public void setUrl(URL url) {
+    public void setUrl(URI url) {
         this._url = url;
     }
 
@@ -114,11 +113,11 @@ public class PostItem {
         this._title = title;
     }
 
-    public URL getPreviewUrl() {
+    public URI getPreviewUrl() {
         return _previewUrl;
     }
 
-    public void setPreviewUrl(URL previewUrl) {
+    public void setPreviewUrl(URI previewUrl) {
         this._previewUrl = previewUrl;
     }
 

@@ -8,10 +8,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.projects.ashutoshb.redditclient.R;
-import com.projects.ashutoshb.redditclient.models.NavItem;
 import com.projects.ashutoshb.redditclient.models.PostItem;
 
-import java.net.URL;
+import java.net.URI;
 import java.util.List;
 
 /**
@@ -21,6 +20,11 @@ public class PostListAdapter extends ArrayAdapter<PostItem> {
 
     Context context;
     int resLayout;
+
+    public void setListPostItems(List<PostItem> listPostItems) {
+        this.listPostItems = listPostItems;
+    }
+
     List<PostItem> listPostItems;
 
     public PostListAdapter(Context context, int resLayout, List<PostItem> listPostItems) {
@@ -50,7 +54,7 @@ public class PostListAdapter extends ArrayAdapter<PostItem> {
         return v;
     }
 
-    private int convertToImage(URL previewUrl) {
+    private int convertToImage(URI previewUrl) {
 
         return 0;
     }
