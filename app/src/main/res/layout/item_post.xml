@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/linearLayout2">
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="20dp"
+            android:layout_height="14dp"
+            android:layout_gravity="center"
+            android:text=""
+            android:id="@+id/upbutton"
+            android:layout_below="@+id/nav_icon"
+            android:background="@drawable/upvotebutton"
+            android:layout_toRightOf="@+id/linearLayout"
+            android:layout_toEndOf="@+id/linearLayout" />
+
+
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:textColor="#000"
+            android:text="score"/>
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="20dp"
+            android:layout_height="14dp"
+            android:layout_gravity="center"
+            android:text=""
+            android:id="@+id/downbutton"
+            android:layout_below="@+id/nav_icon"
+            android:background="@drawable/downvotebutton"
+            android:layout_toRightOf="@+id/linearLayout"
+            android:layout_toEndOf="@+id/linearLayout" />
+        />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout"
+        android:layout_toRightOf="@+id/linearLayout2"
+        android:layout_toEndOf="@+id/linearLayout2"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/domain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="#000"
+            android:text="domain"/>
+
+        <TextView
+            android:id="@+id/num_comments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="#000"
+            android:text="num of comments"/>
+    </LinearLayout>
+
+
+
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/preview"
+        android:src="@drawable/home"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="5dp"/>
+
+
+
+</RelativeLayout>

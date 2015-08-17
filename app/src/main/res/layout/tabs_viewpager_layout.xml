@@ -1,6 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:layout_height="match_parent"
      tools:context=".MainActivity">
 
 
@@ -27,6 +27,7 @@
                     android:id="@android:id/tabs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"></TabWidget>
+
             </HorizontalScrollView>
             <FrameLayout
                 android:id="@android:id/tabcontent"
@@ -42,6 +43,10 @@
                 </android.support.v4.view.ViewPager>
 
             </FrameLayout>
+
+
         </LinearLayout>
     </TabHost>
+
+
 </RelativeLayout>

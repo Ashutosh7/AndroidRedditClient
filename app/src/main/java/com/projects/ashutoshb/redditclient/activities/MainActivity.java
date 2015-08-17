@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         assignUIReferences();
 
+
         listNavItems = new ArrayList<NavItem>();
         populateNavList();
 

@@ -9,13 +9,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
+import android.widget.ListView;
 import android.widget.TabHost;
-
+import android.support.v4.app.ListFragment;
 import com.projects.ashutoshb.redditclient.R;
 import com.projects.ashutoshb.redditclient.adapters.MyFragmentPagerAdapter;
+import com.projects.ashutoshb.redditclient.adapters.PostListAdapter;
 import com.projects.ashutoshb.redditclient.inner.fragments.Tab1Fragment;
 import com.projects.ashutoshb.redditclient.inner.fragments.Tab2Fragment;
 import com.projects.ashutoshb.redditclient.inner.fragments.Tab3Fragment;
+import com.projects.ashutoshb.redditclient.models.PostItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +36,7 @@ public class MyHome extends Fragment implements TabHost.OnTabChangeListener,
     int i=0;
     View v;
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,6 +52,10 @@ public class MyHome extends Fragment implements TabHost.OnTabChangeListener,
         return v;
     }
 
+
+
+
+    
     public class FakeContent implements TabHost.TabContentFactory {
 
         Context context;
@@ -99,9 +107,9 @@ public class MyHome extends Fragment implements TabHost.OnTabChangeListener,
 
     @Override
     public void onTabChanged(String tabId) {
+
         int selectedItem = tabHost.getCurrentTab();
         viewPager.setCurrentItem(selectedItem);
-
         HorizontalScrollView hScrollView = (HorizontalScrollView)v.findViewById(R.id.h_scroll_view);
         View tabView = tabHost.getCurrentTabView();
         int scrollPos = tabView.getLeft() - (hScrollView.getWidth() - tabView.getWidth())/2;
@@ -120,7 +128,7 @@ public class MyHome extends Fragment implements TabHost.OnTabChangeListener,
         listFragments.add(new Tab3Fragment());
 
         MyFragmentPagerAdapter myFragmentPagerAdapter = new MyFragmentPagerAdapter
-                (getChildFragmentManager(), listFragments);
+                (getFragmentManager(), listFragments);
 
         viewPager.setAdapter(myFragmentPagerAdapter);
         viewPager.addOnPageChangeListener(this);

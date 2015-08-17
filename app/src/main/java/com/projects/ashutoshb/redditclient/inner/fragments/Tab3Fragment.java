@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.projects.ashutoshb.redditclient.R;
+import com.projects.ashutoshb.redditclient.services.QueryAPI;
 
 
 /**
@@ -21,6 +22,8 @@ public class Tab3Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.tab3fragment_layout, container, false);
+        QueryAPI task = new QueryAPI("/r/askreddit?after=\"\"");
+        task.execute();
 
         return v;
     }
