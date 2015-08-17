@@ -3,7 +3,6 @@ package com.projects.ashutoshb.redditclient.services;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.util.Log;
-import android.view.View;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -17,13 +16,13 @@ import java.net.URL;
 /**
  * Created by ashutosh.b on 8/14/15.
  */
-public class QueryAPI extends AsyncTask<Void, Void, String> {
+public class QueryAPIbackup extends AsyncTask<Void, Void, String> {
 
     private Exception exception;
 
     String endpoint="/r/askreddit?after=\"\"";
 
-    public QueryAPI(String endpoint) {
+    public QueryAPIbackup(String endpoint) {
         this.endpoint = endpoint;
     }
 

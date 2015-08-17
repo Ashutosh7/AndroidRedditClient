@@ -1,6 +1,7 @@
 package com.projects.ashutoshb.redditclient.services;
 
 import com.projects.ashutoshb.redditclient.models.PostItem;
+import com.projects.ashutoshb.redditclient.models.PostsPage;
 
 import java.util.List;
 
@@ -9,7 +10,7 @@ import java.util.List;
  */
 public interface AsyncDelegate {
 
-    public void asyncComplete(boolean success, List<PostItem> result);
+    public void asyncComplete(boolean success, PostsPage postsPage);
 
 
 }
