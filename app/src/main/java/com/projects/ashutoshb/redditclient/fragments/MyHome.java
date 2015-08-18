@@ -9,16 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
-import android.widget.ListView;
 import android.widget.TabHost;
-import android.support.v4.app.ListFragment;
+
 import com.projects.ashutoshb.redditclient.R;
 import com.projects.ashutoshb.redditclient.adapters.MyFragmentPagerAdapter;
-import com.projects.ashutoshb.redditclient.adapters.PostListAdapter;
 import com.projects.ashutoshb.redditclient.inner.fragments.Tab1Fragment;
-import com.projects.ashutoshb.redditclient.inner.fragments.Tab2Fragment;
-import com.projects.ashutoshb.redditclient.inner.fragments.Tab3Fragment;
-import com.projects.ashutoshb.redditclient.models.PostItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,38 +23,37 @@ import java.util.List;
  * Created by ashutosh.b on 8/14/15.
  */
 public class MyHome extends Fragment implements TabHost.OnTabChangeListener,
-        ViewPager.OnPageChangeListener{
+        ViewPager.OnPageChangeListener {
 
-    private ViewPager viewPager;
-    private TabHost tabHost;
-    private MyFragmentPagerAdapter myViewPagerAdapter;
-    int i=0;
-    View v;
-
+    private ViewPager _viewPager;
+    private TabHost _tabHost;
+    private MyFragmentPagerAdapter _myViewPagerAdapter;
+    private int _idx = 0;
+    private View view;
+    private String _subReddit;
+    String[] tabNames = {"Hot", "New", "Rising", /*"Saved",*/ "Top", "Controversial",/*"Gilded"*/};
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        v = inflater.inflate(R.layout.tabs_viewpager_layout, container, false);
-
+        view = inflater.inflate(R.layout.tabs_viewpager_layout, container, false);
+        _subReddit = getArguments().getString("subReddit");
         //TabHostView Pager"
-        i++;
+        _idx++;
         this.initViewPager();
         this.initTabHost(savedInstanceState);
 
-        return v;
+        return view;
     }
 
 
-
-
-    
     public class FakeContent implements TabHost.TabContentFactory {
 
         Context context;
-        public FakeContent(Context context){
+
+        public FakeContent(Context context) {
             this.context = context;
         }
 
@@ -74,19 +68,18 @@ public class MyHome extends Fragment implements TabHost.OnTabChangeListener,
 
     private void initTabHost(Bundle savedInstanceState) {
 
-        tabHost = (TabHost)v.findViewById(R.id.tabhost);
-        tabHost.setup();
+        _tabHost = (TabHost) view.findViewById(R.id.tabhost);
+        _tabHost.setup();
 
-        String[] tabNames = {"Hot", "New", "Rising", "Saved", "Top", "Controversial","Gilded"};
-        for(int i=0;i<tabNames.length;i++){
+        for (int i = 0; i < tabNames.length; i++) {
             TabHost.TabSpec tabSpec;
-            tabSpec = tabHost.newTabSpec(tabNames[i]);
+            tabSpec = _tabHost.newTabSpec(tabNames[i]);
             tabSpec.setIndicator(tabNames[i]);
             tabSpec.setContent(new FakeContent(getActivity()));
-            tabHost.addTab(tabSpec);
+            _tabHost.addTab(tabSpec);
         }
 
-        tabHost.setOnTabChangedListener(this);
+        _tabHost.setOnTabChangedListener(this);
 
     }
 
@@ -97,7 +90,7 @@ public class MyHome extends Fragment implements TabHost.OnTabChangeListener,
 
     @Override
     public void onPageSelected(int selectedItem) {
-        tabHost.setCurrentTab(selectedItem);
+        _tabHost.setCurrentTab(selectedItem);
     }
 
     @Override
@@ -108,29 +101,54 @@ public class MyHome extends Fragment implements TabHost.OnTabChangeListener,
     @Override
     public void onTabChanged(String tabId) {
 
-        int selectedItem = tabHost.getCurrentTab();
-        viewPager.setCurrentItem(selectedItem);
-        HorizontalScrollView hScrollView = (HorizontalScrollView)v.findViewById(R.id.h_scroll_view);
-        View tabView = tabHost.getCurrentTabView();
-        int scrollPos = tabView.getLeft() - (hScrollView.getWidth() - tabView.getWidth())/2;
-        hScrollView.smoothScrollTo(scrollPos,0);
+        int selectedItem = _tabHost.getCurrentTab();
+        _viewPager.setCurrentItem(selectedItem);
+        HorizontalScrollView hScrollView = (HorizontalScrollView) view.findViewById(R.id.h_scroll_view);
+        View tabView = _tabHost.getCurrentTabView();
+        int scrollPos = tabView.getLeft() - (hScrollView.getWidth() - tabView.getWidth()) / 2;
+        hScrollView.smoothScrollTo(scrollPos, 0);
 
     }
 
+    private Bundle makeBundle(String subReddit, String category) {
+
+        Bundle args = new Bundle();
+        args.putString("subReddit", subReddit);
+        args.putString("category", category);
+        return args;
+    }
+
+
     private void initViewPager() {
-        viewPager = (ViewPager) v.findViewById(R.id.view_pager);
+        _viewPager = (ViewPager) view.findViewById(R.id.view_pager);
         List<Fragment> listFragments = new ArrayList<Fragment>();
-        listFragments.add(new Tab1Fragment());
-        listFragments.add(new Tab2Fragment());
-        listFragments.add(new Tab3Fragment());
-        listFragments.add(new Tab1Fragment());
-        listFragments.add(new Tab2Fragment());
-        listFragments.add(new Tab3Fragment());
+        listFragments = getFragmentList();
 
         MyFragmentPagerAdapter myFragmentPagerAdapter = new MyFragmentPagerAdapter
                 (getFragmentManager(), listFragments);
 
-        viewPager.setAdapter(myFragmentPagerAdapter);
-        viewPager.addOnPageChangeListener(this);
+        _viewPager.setAdapter(myFragmentPagerAdapter);
+        _viewPager.addOnPageChangeListener(this);
+    }
+
+
+    private Fragment getFragment(String subReddit, String category) {
+
+        Tab1Fragment sampleFragment = new Tab1Fragment();
+        Bundle args = makeBundle(subReddit, category);
+        sampleFragment.setArguments(args);
+
+        return sampleFragment;
+    }
+
+    private List<Fragment> getFragmentList() {
+
+        List<Fragment> listFragments = new ArrayList<Fragment>();
+
+        for (int i = 0; i < tabNames.length; i++) {
+            listFragments.add(getFragment(_subReddit, tabNames[i].toLowerCase()));
+        }
+        return listFragments;
+
     }
 }

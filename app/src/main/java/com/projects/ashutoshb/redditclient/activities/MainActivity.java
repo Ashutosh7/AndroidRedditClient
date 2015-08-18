@@ -89,7 +89,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void populateFragmentList() {
-        listFragments.add(new MyHome());
+
+        //Hardcoding
+        MyHome myHome = new MyHome();
+        Bundle args = new Bundle();
+        args.putString("subReddit", "funny");
+        myHome.setArguments(args);
+        ///////////////////
+
+        listFragments.add(myHome);
         listFragments.add(new MySettings());
         listFragments.add(new MyAbout());
     }
