@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 //replace the fragment with the selection correspondingly:
+                Log.i("position", String.valueOf(position));
                 loadFragmentAtPosition(position);
 
             }
@@ -79,10 +81,17 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.setDrawerListener(actionBarDrawerToggle);
     }
 
+
+
     private void loadFragmentAtPosition(int position) {
         FragmentManager fragmentManager = getSupportFragmentManager();
+
+        Fragment load = listFragments.get(position);
+
+
         fragmentManager.beginTransaction().replace(R.id.main_content,
-                listFragments.get(position)).commit();
+                load).commit();
+
         setTitle(listNavItems.get(position).getTitle());
         lvNav.setItemChecked(position, true);
         drawerLayout.closeDrawer(drawerPane);
@@ -91,21 +100,34 @@ public class MainActivity extends AppCompatActivity {
     private void populateFragmentList() {
 
         //Hardcoding
-        MyHome myHome = new MyHome();
+        MyHome myFunny = new MyHome();
         Bundle args = new Bundle();
         args.putString("subReddit", "funny");
-        myHome.setArguments(args);
+        myFunny.setArguments(args);
         ///////////////////
 
-        listFragments.add(myHome);
-        listFragments.add(new MySettings());
-        listFragments.add(new MyAbout());
+        //Hardcoding
+        MyHome myAskReddit = new MyHome();
+        Bundle args1 = new Bundle();
+        args1.putString("subReddit", "askreddit");
+        myAskReddit.setArguments(args1);
+        ///////////////////
+        //Hardcoding
+        MyHome myPics = new MyHome();
+        Bundle args2 = new Bundle();
+        args2.putString("subReddit", "pics");
+        myPics.setArguments(args2);
+        ///////////////////
+
+        listFragments.add(myFunny);
+        listFragments.add(myAskReddit);
+        listFragments.add(myPics);
     }
 
     private void populateNavList() {
-        listNavItems.add(new NavItem("Home", "Home page", R.drawable.home));
-        listNavItems.add(new NavItem("Settings", "Change Something", R.drawable.settings));
-        listNavItems.add(new NavItem("About", "Info", R.drawable.info));
+        listNavItems.add(new NavItem("Funny"));
+        listNavItems.add(new NavItem("AskReddit"));
+        listNavItems.add(new NavItem("Pics"));
         NavListAdapter navListAdapter = new NavListAdapter(getApplicationContext(),
                 R.layout.item_nav_list,listNavItems);
         lvNav.setAdapter(navListAdapter);

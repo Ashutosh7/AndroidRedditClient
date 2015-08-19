@@ -78,7 +78,11 @@ public class GetFromAPI extends AsyncTask<String, Void, List<PostItem>> {
 
                 return result;
 
-            } finally {
+            } catch (Exception e){
+                Log.e("ERROR", e.getMessage(), e);
+                return null;
+            }
+            finally {
                 urlConnection.disconnect();
             }
         } catch (Exception e) {
@@ -90,10 +94,15 @@ public class GetFromAPI extends AsyncTask<String, Void, List<PostItem>> {
     @Override
     protected void onPostExecute(List<PostItem> result) {
         super.onPostExecute(result);
-        Log.i("path", _endpoint);
-        Log.i("after",_after);
-        PostsPage postsPage = new PostsPage(result, _after, _before);
-        _delegate.asyncComplete(true, postsPage);
+        if(result!=null) {
+            Log.i("path", _endpoint);
+            Log.i("after", _after);
+            PostsPage postsPage = new PostsPage(result, _after, _before);
+            _delegate.asyncComplete(true, postsPage);
+        }
+        else{
+            _delegate.asyncComplete(false,null);
+        }
     }
 
 

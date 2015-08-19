@@ -125,7 +125,7 @@ public class MyHome extends Fragment implements TabHost.OnTabChangeListener,
         listFragments = getFragmentList();
 
         MyFragmentPagerAdapter myFragmentPagerAdapter = new MyFragmentPagerAdapter
-                (getFragmentManager(), listFragments);
+                (getChildFragmentManager(), listFragments);
 
         _viewPager.setAdapter(myFragmentPagerAdapter);
         _viewPager.addOnPageChangeListener(this);

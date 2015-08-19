@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.projects.ashutoshb.redditclient.R;
-import com.projects.ashutoshb.redditclient.services.QueryAPI;
 
 
 /**

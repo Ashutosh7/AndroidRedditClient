@@ -1,103 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@drawable/background">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    android:background="@color/primary_material_light">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
-        android:id="@+id/linearLayout2">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="20dp"
-            android:layout_height="14dp"
-            android:layout_gravity="center"
-            android:text=""
-            android:id="@+id/upbutton"
-            android:layout_below="@+id/nav_icon"
-            android:background="@drawable/upvotebutton"
-            android:layout_toRightOf="@+id/linearLayout"
-            android:layout_toEndOf="@+id/linearLayout" />
-
-
-        <TextView
-            android:id="@+id/score"
+        <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="10sp"
-            android:textColor="#000"
-            android:text="score"/>
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="20dp"
-            android:layout_height="14dp"
-            android:layout_gravity="center"
-            android:text=""
-            android:id="@+id/downbutton"
-            android:layout_below="@+id/nav_icon"
-            android:background="@drawable/downvotebutton"
-            android:layout_toRightOf="@+id/linearLayout"
-            android:layout_toEndOf="@+id/linearLayout" />
-        />
+            <Button
+                android:id="@+id/upbutton"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="20dp"
+                android:layout_height="14dp"
+                android:layout_below="@+id/nav_icon"
+                android:layout_gravity="center"
+                android:layout_toEndOf="@+id/linearLayout"
+                android:layout_toRightOf="@+id/linearLayout"
+                android:background="@drawable/upvotebutton"
+                android:text="" />
 
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:id="@+id/linearLayout"
-        android:layout_toRightOf="@+id/linearLayout2"
-        android:layout_toEndOf="@+id/linearLayout2"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp">
+            <TextView
+                android:id="@+id/score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="score"
+                android:textColor="#000"
+                android:textSize="10sp" />
 
-        <TextView
-            android:id="@+id/title"
+            <Button
+                android:id="@+id/downbutton"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="20dp"
+                android:layout_height="14dp"
+                android:layout_below="@+id/nav_icon"
+                android:layout_gravity="center"
+                android:layout_toEndOf="@+id/linearLayout"
+                android:layout_toRightOf="@+id/linearLayout"
+                android:background="@drawable/downvotebutton"
+                android:text="" />
+            />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Title"
-            android:textSize="16sp"
-            android:textColor="#000"
-            android:textStyle="bold"/>
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/linearLayout2"
+            android:layout_toLeftOf="@+id/preview"
+            android:layout_toRightOf="@+id/linearLayout2"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/domain"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="12sp"
-            android:textColor="#000"
-            android:text="domain"/>
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Title"
+                android:textColor="#000"
+                android:textSize="14sp"
+                android:textStyle="normal" />
 
-        <TextView
-            android:id="@+id/num_comments"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="12sp"
-            android:textColor="#000"
-            android:text="num of comments"/>
-    </LinearLayout>
+            <TextView
+                android:id="@+id/domain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="domain"
+                android:textColor="#000"
+                android:textSize="12sp" />
 
-
-
-
-    <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:id="@+id/preview"
-        android:src="@drawable/home"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="5dp"/>
+            <TextView
+                android:id="@+id/num_comments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="num of comments"
+                android:textColor="#000"
+                android:textSize="12sp" />
+        </LinearLayout>
 
 
+        <ImageButton
+            android:id="@+id/preview"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@color/primary_material_light"
+            android:scaleType="fitXY"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp" />
 
-</RelativeLayout>
+
+    </RelativeLayout>
+</LinearLayout>
