@@ -49,7 +49,7 @@ public class GetFromAPI extends AsyncTask<String, Void, List<PostItem>> {
         if (Build.FINGERPRINT.startsWith("generic"))
             _serverAddress = "http://10.0.2.2:8080/api";
         else
-            _serverAddress = "192.168.0.100";
+            _serverAddress = "http://192.168.0.104:8080/api";
 
         _uri = _serverAddress + _endpoint;
 

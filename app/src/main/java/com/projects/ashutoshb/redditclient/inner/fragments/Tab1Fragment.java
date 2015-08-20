@@ -123,7 +123,7 @@ public class Tab1Fragment extends ListFragment implements AsyncDelegate{
         }
         else {
 
-            Toast.makeText(getActivity(), "Server Connection Failed",
+            Toast.makeText(context, "Server Connection Failed",
                     Toast.LENGTH_LONG).show();
 
         }

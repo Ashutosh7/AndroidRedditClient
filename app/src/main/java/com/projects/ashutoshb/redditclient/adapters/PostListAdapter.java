@@ -57,12 +57,12 @@ public class PostListAdapter extends ArrayAdapter<PostItem> {
         title.setText(postItem.getTitle());
         domain.setText(postItem.getDomain().toString());
         score.setText(String.valueOf(postItem.getScore()));
-        numComments.setText(String.valueOf(postItem.getNumComments()));
+        numComments.setText(String.valueOf(postItem.getNumComments()) + " comments");
 //        preview.setImageResource(convertToImage(postItem.getPreviewUrl()));
         if(postItem.getPreviewUrl().toString().length()>0) {
             Picasso.with(getContext())
                     .load(postItem.getPreviewUrl().toString()).noFade().placeholder(R.drawable.progress_animation)
-                    .fit().transform(new RoundedTransformation(7,0)).into(preview);
+                    .fit().transform(new RoundedTransformation(20,0)).into(preview);
         }
         else{
             ViewGroup.LayoutParams layoutParams = preview.getLayoutParams();
